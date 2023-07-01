@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
 
-use crate::{MetaKeys, Status};
+use crate::reply::{MetaKeys, Status};
 
 /// Structured error response between services.
 /// This is based on GCP Cloud API Error best practices:

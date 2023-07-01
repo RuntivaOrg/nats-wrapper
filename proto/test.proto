@@ -1,0 +1,14 @@
+syntax = "proto3";
+package test;
+message user_data{
+	string id = 1;
+	string attr = 2;
+	double credit = 3;
+}
+
+service user_service{
+    rpc get_user(user_data) returns (user_data);
+    rpc add_user(user_data) returns (user_data);
+    rpc del_user(user_data) returns (user_data);
+    rpc update_user(user_data) returns (user_data);
+}

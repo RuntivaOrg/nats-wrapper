@@ -2,28 +2,37 @@ use std::collections::HashMap;
 
 use serde::{Deserialize, Serialize};
 
-use crate::{ErrorDetails, ErrorReason, MetaKeys, ResponseError, Status};
+use crate::reply::{ErrorDetails, ErrorReason, MetaKeys, ResponseError, Status};
 
 /// `StandardNatsReply` is used for NATs Request/Reply responses with
 /// a standard set of ErrorReasons. Custom reasons can be implemented
 /// by using the `NatsReply` struct directly.
 ///
 /// Examples of creating success and error responses:
-/// ```rust
-///     let success_response: StandardNatsReply<ChannelResponse> =
-///     response_wrapper::StandardNatsReply::new(ChannelResponse {
-///         id: Uuid::new_v4(),
+/// ``` rust
+///     use response_wrapper::reply::{StandardNatsReply, Status, ErrorReason, MetaKeys};
+///     struct SampleResponse {
+///         id: uuid::Uuid,
+///         name: String,
+///     }
+
+///     let success_response = StandardNatsReply::new(SampleResponse {
+///         id: uuid::Uuid::new_v4(),
 ///         name: "test".to_string(),
 ///     });
 ///     
-///     let error_response: StandardNatsReply<()> = StandardNatsReply::with_error(Status::DatabaseError)
-///     .status(Status::DatabaseError)
-///     .message("Unable to connect to database".to_string())
-///     .with_details(
-///         ErrorReason::ApiKeyInvalid,
-///         "chat.persist.server".to_string(),
-///     )
-///     .append_metadata(MetaKeys::DatabaseError, "127.0.0.1".to_string());
+///     
+///     let error_response: StandardNatsReply<()> =
+///     StandardNatsReply::with_error(Status::DatabaseError)
+///         .message("Unable to connect to database".to_string())
+///         .with_details(
+///             ErrorReason::ApiKeyInvalid,
+///             "chat.persist.server".to_string(),
+///         )
+///         .append_metadata(
+///             MetaKeys::DatabaseError,
+///             "127.0.0.1".to_string(),
+///         );
 /// ```
 pub type StandardNatsReply<T> = NatsReply<T, ErrorReason>;
 
@@ -80,3 +89,7 @@ impl<T, R> NatsReply<T, R> {
         self
     }
 }
+
+#[cfg(test)]
+#[path = "./response_tests.rs"]
+mod response_tests;

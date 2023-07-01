@@ -7,7 +7,7 @@ pub trait ErrorReasons: Debug + Clone + Serialize + DeserializeOwned {}
 /// Manages a default static list of error reasons
 /// This can be overriden to a custom list of error reasons
 /// when using [`crate::ErrorInfo`](crate::ErrorInfo)
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub enum ErrorReason {
     ApiKeyInvalid,
 }
