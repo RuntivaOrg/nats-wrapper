@@ -6,14 +6,14 @@ use bytes::Bytes;
 pub use json::NatsJson;
 
 pub trait Serializer<T> {
-    fn serialize(&self, value: T) -> Vec<u8>;
+    fn serialize(&self, value: T) -> Bytes;
 }
 
 impl<T, F> Serializer<T> for F
 where
-    F: Fn(T) -> Vec<u8>,
+    F: Fn(T) -> Bytes,
 {
-    fn serialize(&self, value: T) -> Vec<u8> {
+    fn serialize(&self, value: T) -> Bytes {
         self(value)
     }
 }

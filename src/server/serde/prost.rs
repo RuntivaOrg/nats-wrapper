@@ -13,8 +13,8 @@ impl<T> Serializer<T> for NatsMessageSerde<T>
 where
     T: Message,
 {
-    fn serialize(&self, value: T) -> Vec<u8> {
-        value.encode_to_vec()
+    fn serialize(&self, value: T) -> Bytes {
+        value.encode_to_vec().into()
     }
 }
 

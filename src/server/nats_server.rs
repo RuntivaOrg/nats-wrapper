@@ -2,6 +2,7 @@ use std::env;
 
 use async_nats::Client;
 use async_trait::async_trait;
+use bytes::Bytes;
 use prost::Message;
 use serde::Serialize;
 
@@ -51,10 +52,10 @@ impl NatsServer {
     async fn internal_publish(
         &self,
         subject: String,
-        message: Vec<u8>,
+        message: Bytes,
     ) -> Result<(), NatsWrapperError> {
         self.nats
-            .publish(subject, message.into())
+            .publish(subject, message)
             .await
             .map_err(NatsWrapperError::NatsPublishError)
     }
@@ -62,10 +63,10 @@ impl NatsServer {
     async fn internal_request(
         &self,
         subject: String,
-        message: Vec<u8>,
+        message: Bytes,
     ) -> Result<async_nats::Message, NatsWrapperError> {
         self.nats
-            .request(subject, message.into())
+            .request(subject, message)
             .await
             .map_err(NatsWrapperError::NatsRequestError)
     }

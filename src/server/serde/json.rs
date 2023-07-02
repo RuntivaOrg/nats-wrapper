@@ -18,8 +18,10 @@ impl<T> Serializer<T> for NatsJson<T>
 where
     T: Serialize,
 {
-    fn serialize(&self, value: T) -> Vec<u8> {
-        serde_json::to_vec(&value).expect("json serialization should not fail")
+    fn serialize(&self, value: T) -> Bytes {
+        serde_json::to_vec(&value)
+            .expect("json serialization should not fail")
+            .into()
     }
 }
 
