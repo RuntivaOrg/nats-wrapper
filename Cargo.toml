@@ -6,7 +6,6 @@ readme = "README.md"
 publish = false
 
 [dependencies]
-# anyhow = "1.0.71"
 thiserror = "1.0.30"
 
 # Async Runtime:

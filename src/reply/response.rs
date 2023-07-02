@@ -10,7 +10,7 @@ use crate::reply::{ErrorDetails, ErrorReason, MetaKeys, ResponseError, Status};
 ///
 /// Examples of creating success and error responses:
 /// ``` rust
-///     use response_wrapper::reply::{StandardNatsReply, Status, ErrorReason, MetaKeys};
+///     use nats_wrapper::reply::{StandardNatsReply, Status, ErrorReason, MetaKeys};
 ///     struct SampleResponse {
 ///         id: uuid::Uuid,
 ///         name: String,

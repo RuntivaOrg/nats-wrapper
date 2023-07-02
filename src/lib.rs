@@ -8,6 +8,8 @@
 ///
 pub mod reply;
 pub mod server;
+mod subject;
+pub use subject::SubjectName;
 
 #[allow(unused_qualifications)]
 #[allow(clippy::all)]

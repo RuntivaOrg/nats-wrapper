@@ -9,7 +9,7 @@ pub mod receiver;
 mod error;
 pub use error::NatsWrapperError;
 
-pub(crate) mod serde;
+pub mod serde;
 
 #[allow(unused_qualifications)]
 #[allow(clippy::all)]
