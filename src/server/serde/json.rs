@@ -1,5 +1,6 @@
 use std::marker::PhantomData;
 
+use bytes::Bytes;
 use serde::{Deserialize, Serialize};
 
 use crate::server::serde::{Deserializer, Serializer};
@@ -28,8 +29,8 @@ where
 {
     type Error = serde_json::Error;
 
-    fn deserialize(&self, data: Vec<u8>) -> Result<T, Self::Error> {
-        serde_json::from_slice(&data)
+    fn deserialize(&self, data: Bytes /*Vec<u8>*/) -> Result<T, Self::Error> {
+        serde_json::from_slice(&data[..])
     }
 }
 

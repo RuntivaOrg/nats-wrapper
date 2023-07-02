@@ -16,7 +16,7 @@ mod json_tests {
 
         let serialized_test_msg = serde.serialize(test_msg.clone());
 
-        let deserized_test_msg = serde.deserialize(serialized_test_msg).unwrap();
+        let deserized_test_msg = serde.deserialize(serialized_test_msg.into()).unwrap();
 
         assert_eq!(deserized_test_msg, test_msg);
     }

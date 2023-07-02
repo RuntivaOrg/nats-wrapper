@@ -1,8 +1,9 @@
 mod json;
 mod prost;
 
-pub use json::NatsJson;
 pub use self::prost::NatsMessageSerde;
+use bytes::Bytes;
+pub use json::NatsJson;
 
 pub trait Serializer<T> {
     fn serialize(&self, value: T) -> Vec<u8>;
@@ -20,16 +21,16 @@ where
 pub trait Deserializer<T> {
     type Error;
 
-    fn deserialize(&self, data: Vec<u8>) -> Result<T, Self::Error>;
+    fn deserialize(&self, data: Bytes) -> Result<T, Self::Error>;
 }
 
 impl<T, Err, F> Deserializer<T> for F
 where
-    F: Fn(Vec<u8>) -> Result<T, Err>,
+    F: Fn(Bytes) -> Result<T, Err>,
 {
     type Error = Err;
 
-    fn deserialize(&self, data: Vec<u8>) -> Result<T, Self::Error> {
+    fn deserialize(&self, data: Bytes) -> Result<T, Self::Error> {
         self(data)
     }
 }

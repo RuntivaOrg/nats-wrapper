@@ -25,7 +25,7 @@ mod prost_tests {
         // JSON:
         // [123, 34, 105, 100, 34, 58, 34, 49, 50, 51, 52, 34, 44, 34, 110, 105, 99, 107, 34, 58, 34, 116, 101, 115, 116, 34, 44, 34, 99, 114, 101, 100, 105, 116, 34, 58, 50, 51, 46, 50, 51, 125]
 
-        let deserized_test_msg = serde.deserialize(serialized_test_msg).unwrap();
+        let deserized_test_msg = serde.deserialize(serialized_test_msg.into()).unwrap();
 
         assert_eq!(deserized_test_msg, test_msg);
     }

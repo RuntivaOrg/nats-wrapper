@@ -24,10 +24,10 @@ where
 {
     type Error = prost::DecodeError;
 
-    fn deserialize(&self, data: Vec<u8>) -> Result<T, Self::Error> {
-        let buf = Bytes::from(data);
+    fn deserialize(&self, data: Bytes) -> Result<T, Self::Error> {
+        //let buf = Bytes::from(data);
 
-        T::decode(buf)
+        T::decode(data)
     }
 }
 
