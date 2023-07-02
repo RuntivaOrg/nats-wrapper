@@ -1,5 +1,8 @@
-pub mod json;
-pub mod prost;
+mod json;
+mod prost;
+
+pub use json::NatsJson;
+pub use self::prost::NatsMessageSerde;
 
 pub trait Serializer<T> {
     fn serialize(&self, value: T) -> Vec<u8>;

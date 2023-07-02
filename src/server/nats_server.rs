@@ -6,7 +6,7 @@ use prost::Message;
 use serde::Serialize;
 
 use crate::server::{
-    serde::{json::NatsJson, prost::NatsMessageSerde, Serializer},
+    serde::{NatsJson, NatsMessageSerde, Serializer},
     server_traits::{RequestJson, RequestProst},
     NatsWrapperError, PublishJson, PublishProst,
 };
