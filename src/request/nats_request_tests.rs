@@ -3,7 +3,8 @@ mod nats_request_tests {
 
     use tonic::metadata::{MetadataMap, MetadataValue};
 
-    use crate::{proto, request::nats_request::RequestHeaders};
+    use crate::request::nats_request::RequestHeaders;
+    use chat_proto::chat::{self as proto};
 
     #[test]
     fn test_from_proto_metadata_map_and_back() {

@@ -6,6 +6,10 @@ readme = "README.md"
 publish = false
 
 [dependencies]
+chat-proto = { git = "https://github.com/RuntivaOrg/chat-proto.git" }
+
+
+
 thiserror = "1.0.30"
 anyhow = "1.0.71"
 

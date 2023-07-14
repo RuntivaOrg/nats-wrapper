@@ -1,6 +1,5 @@
+use chat_proto::chat as proto;
 use tonic::metadata::{AsciiMetadataKey, KeyAndValueRef, MetadataMap};
-
-use crate::proto;
 
 // TryFrom converter used for NatsRequest to extract both generic data and the MetadataMap headers
 pub trait TryFromNatsRequest<T>: Sized {

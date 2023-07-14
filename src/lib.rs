@@ -14,7 +14,7 @@ pub use subject::SubjectName;
 
 #[allow(unused_qualifications)]
 #[allow(clippy::all)]
-pub mod proto {
+pub mod proto_test {
     tonic::include_proto!("test");
 
     pub const FILE_DESCRIPTOR_SET: &[u8] = tonic::include_file_descriptor_set!("test");

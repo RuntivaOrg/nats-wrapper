@@ -2,10 +2,8 @@
 mod nats_server_tests {
     use serde::Serialize;
 
-    use crate::{
-        proto,
-        server::{NatsServer, NatsWrapperError},
-    };
+    use crate::proto_test as proto;
+    use crate::server::{NatsServer, NatsWrapperError};
 
     #[tokio::test]
     async fn test_publish_prost() -> Result<(), NatsWrapperError> {

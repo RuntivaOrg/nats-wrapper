@@ -3,10 +3,10 @@ mod converter_tests {
     use std::vec;
 
     use bytes::Bytes;
+    use chat_proto::chat as proto;
     use tonic::metadata::MetadataValue;
 
     use crate::{
-        proto,
         request::{Converter, NatsEnvelope},
         server::serde::NatsMessageSerde,
     };
@@ -57,10 +57,10 @@ mod converter_tests {
     }
 }
 
+use chat_proto::chat as proto;
 use serde::{Deserialize, Serialize};
 
 use crate::{
-    proto,
     request::nats_request::{RequestHeaders, TryFromNatsRequest},
     server::NatsWrapperError,
 };
