@@ -5,7 +5,7 @@
 ///
 /// ```rust
 mod nats_request;
-pub use nats_request::NatsEnvelope;
+pub use nats_request::{NatsEnvelope, RequestHeaders};
 
 mod converter;
 pub use converter::Converter;
