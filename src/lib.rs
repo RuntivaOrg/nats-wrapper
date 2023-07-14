@@ -7,6 +7,7 @@
 /// It also provides a response object used in the reply portion of a NATS request/reply call.
 ///
 pub mod reply;
+pub mod request;
 pub mod server;
 mod subject;
 pub use subject::SubjectName;

@@ -4,12 +4,16 @@ use async_nats::{ConnectError, PublishError, RequestError};
 
 #[derive(Debug, thiserror::Error)]
 pub enum NatsWrapperError {
-    #[error("Invalid gRPC request ({0}): {1}")]
-    ConvertError(String, String),
+    #[error("failed to convert domain event from its serialization type: {0}")]
+    ConvertEvent(#[source] Box<dyn std::error::Error + Send + Sync + 'static>),
+    #[error("failed to deserialize event from database: {0}")]
+    DeserializeEvent(#[source] Box<dyn std::error::Error + Send + Sync + 'static>),
 
-    #[error("Serialization error: {0}")]
-    SerializationError(#[from] serde_json::error::Error),
+    // #[error("Invalid gRPC request ({0}): {1}")]
+    // ConvertError(String, String),
 
+    // #[error("Serialization error: {0}")]
+    // SerializationError(#[from] serde_json::error::Error),
     #[error("Utf8 error: {0}")]
     Utf8Error(#[from] Utf8Error),
 
